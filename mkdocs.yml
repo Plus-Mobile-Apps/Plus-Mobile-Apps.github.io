@@ -79,6 +79,7 @@ markdown_extensions:
 
 nav:
   - Home: index.md
+  - Wolfpack+: https://wolfpack.plusmobileapps.com/
   - Blog: 
     - blog/index.md
   - About:
