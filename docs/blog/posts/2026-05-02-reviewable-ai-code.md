@@ -15,6 +15,8 @@ categories:
 
 A 1,000-line PR is hard to review whether a human or an AI wrote it. Once the AI is doing most of the typing, the bottleneck shifts: the review queue is what slows you down, not the implementation. After shipping a [browser-history feature](https://github.com/plusmobileapps/chef-mate/pull/136) on [Chef-mate](https://github.com/plusmobileapps/chef-mate) — almost 1,000 lines added across 40 files — I wanted to write down the practices that made the diff actually reviewable instead of a wall of generated code.
 
+I picked up most of this workflow at Square, where the unwritten rule was that a PR should be small enough that someone could review it between meetings. Big features were a stack of focused commits, each one telling a single story; reviewers walked them in order and left precise feedback because each diff was small enough to actually hold in your head. What I'm doing now is mostly translating that workflow into prompts and repo conventions so the AI produces a stack of commits that looks like one a careful engineer would have hand-crafted.
+
 <!-- more -->
 
 ## The problem with AI-generated diffs
@@ -91,7 +93,7 @@ The other two review comments on this PR — *"create a test module where browse
 
 ## The pattern
 
-None of this is novel review advice. It's the same playbook good engineers have used on each other for years: small commits, clear scopes, tests with the code they cover, an explicit test plan, and a reviewer who can ask *why*. What changed is that the AI is now the one typing — which means the playbook has to live in the prompt, the repo conventions, and the review tooling, not just in the reviewer's habits.
+None of this is novel review advice. It's the same playbook I learned at Square and that good engineers have used on each other for years: small commits, clear scopes, tests with the code they cover, an explicit test plan, and a reviewer who can ask *why*. What changed is that the AI is now the one typing — which means the playbook has to live in the prompt, the repo conventions, and the review tooling, not just in the reviewer's habits.
 
 Code volume is no longer the constraint. Reviewability is. Optimize for that.
 
