@@ -9,6 +9,10 @@ categories:
 
 # How to Get AI to Write More Reviewable Code
 
+<figure markdown="span">
+  ![Making large AI PRs reviewable: review overload vs atomic, structured commits](../../assets/images/reviewable-ai-code.png){ width="700" }
+</figure>
+
 A 1,000-line PR is hard to review whether a human or an AI wrote it. Once the AI is doing most of the typing, the bottleneck shifts: the review queue is what slows you down, not the implementation. After shipping a [browser-history feature](https://github.com/plusmobileapps/chef-mate/pull/136) on [Chef-mate](https://github.com/plusmobileapps/chef-mate) — almost 1,000 lines added across 40 files — I wanted to write down the practices that made the diff actually reviewable instead of a wall of generated code.
 
 <!-- more -->
