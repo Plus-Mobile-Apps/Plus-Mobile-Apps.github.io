@@ -14,13 +14,17 @@ tags:
 
 # Kotlin Multiplatform UI Text Models With TextData
 
-One of the small architecture rules I have been using in [Chef Mate](https://github.com/Plus-Mobile-Apps/chef-mate) is this:
+![](../../assets/images/ui-text-model.png)
+
+One practice I picked up at Square was separating business logic from the UI through a text model — a sealed class that abstracts whether displayed text comes from a fixed string, a string resource, or a formatted string. This creates a clean separation of concerns between business logic and presentation logic.
+
+<!-- more -->
+
+So one of the small architecture rules I have been using in [Chef Mate](https://github.com/Plus-Mobile-Apps/chef-mate) is this:
 
 > Always expose text from a view model to UI code as `TextData`.
 
 The view model can still keep strongly typed domain state internally. In fact, it should. But the public state model that the UI collects should not force composables to understand domain errors, validation states, or feature-specific enums just to show a message on screen.
-
-<!-- more -->
 
 The UI should receive a text model, localize it, and render it.
 
