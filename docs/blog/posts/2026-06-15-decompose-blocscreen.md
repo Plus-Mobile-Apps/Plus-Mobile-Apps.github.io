@@ -8,7 +8,9 @@ categories:
 
 # Letting a Decompose BLoC Render Itself
 
-I use [Decompose](https://arkivanov.github.io/Decompose/) to manage navigation in my Kotlin Multiplatform projects. It does a great job of modeling navigation as a tree of business logic components (BLoCs) that are completely platform- and UI-agnostic. But that agnosticism comes with a small tax: something, somewhere, still has to decide which composable to draw for each BLoC. This post is about how I got rid of that boilerplate by giving each BLoC the ability to render itself.
+![](../../assets/images/decompose-bloc-screen.png)
+
+I use [Decompose](https://arkivanov.github.io/Decompose/) to manage navigation in my Kotlin Multiplatform projects. It does a great job of modeling navigation as a tree of business logic components (BLoCs) that are completely platform- and UI-agnostic. But that agnosticism comes with a small tax: something, somewhere, still has to decide which composable to draw for each BLoC. This post is about how I got rid of that boilerplate by giving each BLoC the ability to render itself since [Chef Mate](https://github.com/Plus-Mobile-Apps/chef-mate) uses Compose Multiplatform to render its UI. 
 
 <!-- more -->
 
@@ -34,16 +36,17 @@ This exists purely to map a sealed variant to its composable. Every new screen m
 Decompose keeps logic and UI apart on purpose, and I didn't want to throw that away. So instead of registering composables somewhere, I introduced a tiny interface in my `public` module that simply declares "I know how to render myself":
 
 ```kotlin
-interface BlocScreen {
-    @Composable
-    fun Content(modifier: Modifier)
+interface ComposeScreen {
+    @Composable fun Content(modifier: Modifier)
 }
+
+@Composable fun ComposeScreen.Content() = Content(Modifier)
 ```
 
 The key detail is *where* the implementation lives. The interface and its default body sit in the `public` API module, where the screen composable is already in scope. A BLoC's interface can supply the default rendering, while the `impl` module — the actual implementation detail — stays free of any Compose dependency:
 
 ```kotlin
-interface CookModeBloc : BlocScreen {
+interface CookModeBloc : ComposeScreen {
     // ...bloc state and intents...
 
     @Composable
@@ -71,7 +74,7 @@ Along the way I settled on a slightly different shape than the original `BlocScr
 
 ```kotlin
 sealed class Child {
-    abstract val bloc: BlocScreen
+    abstract val bloc: ComposeScreen
     data class Detail(override val bloc: RecipeDetailBloc) : Child()
     data class Edit(override val bloc: EditRecipeBloc)     : Child()
 }
