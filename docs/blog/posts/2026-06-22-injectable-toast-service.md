@@ -15,6 +15,8 @@ tags:
 
 # An Injectable Toast Service for Compose Multiplatform
 
+![](../../assets/images/toast-service.png)
+
 Showing a snackbar in Compose is supposed to be easy, and for one screen it is. But repeat the
 pattern across an app and the cracks show: every screen hand-rolls a `SnackbarHostState`, a
 `LaunchedEffect`, and some bit of state to drive them. The presentation logic that *decides* a
