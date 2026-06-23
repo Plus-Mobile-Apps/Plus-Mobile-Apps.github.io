@@ -102,7 +102,7 @@ queue empties and refills, two messages can never collide on an id. That matters
 reports *which* message it finished showing by id; if ids were reused you could dequeue the wrong
 one.
 
-Messages carry [`TextData`](2026-06-11-kotlin-multiplatform-ui-text-model.md) rather than raw
+Messages carry [`TextData`](/blog/2026/06/11/kotlin-multiplatform-ui-text-model/) rather than raw
 strings, so the queue stays free of Compose's `stringResource` API and localization still happens in
 composition.
 
