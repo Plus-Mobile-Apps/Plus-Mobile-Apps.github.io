@@ -1,5 +1,5 @@
 site_name: Plus Mobile Apps
-site_description: Mobile apps company and tech blog
+site_description: Kotlin Multiplatform apps by Andrew Steinmetz - Chef Mate+ and Wolfpack+ - plus a tech blog about how they get built
 site_url: https://plusmobileapps.com
 
 theme:
@@ -57,6 +57,7 @@ plugins:
 
 extra_css:
   - stylesheets/newsletter.css
+  - stylesheets/home.css
 
 extra_javascript:
   - javascripts/newsletter.js
@@ -82,6 +83,9 @@ markdown_extensions:
   - pymdownx.superfences
   - attr_list
   - md_in_html
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
 nav:
   - Home: index.md
