@@ -1,0 +1,119 @@
+/* Landing page: hero, app showcase, and contact blocks. */
+
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding: 1rem 0 2rem;
+  border-bottom: .05rem solid var(--md-default-fg-color--lightest);
+}
+
+.hero__text { flex: 1 1 22rem; }
+
+.hero__text h1 {
+  margin-bottom: .4rem;
+  font-weight: 700;
+}
+
+.hero__tagline {
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--md-default-fg-color--light);
+}
+
+.hero__logo {
+  flex: 0 1 14rem;
+  text-align: center;
+}
+
+.hero__logo img {
+  max-width: 12rem;
+  border-radius: .8rem;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-top: 1.2rem;
+}
+
+/* App showcase */
+
+.app {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border: .05rem solid var(--md-default-fg-color--lightest);
+  border-radius: .5rem;
+  background: var(--md-code-bg-color);
+}
+
+.app--reverse { flex-direction: row-reverse; }
+
+.app__body { flex: 1 1 20rem; }
+
+.app__media {
+  flex: 0 1 18rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .8rem;
+}
+
+.app__media img {
+  max-height: 20rem;
+  width: auto;
+  border-radius: .4rem;
+  box-shadow: 0 .2rem .8rem rgba(0, 0, 0, .18);
+}
+
+.app__header {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  margin-bottom: .2rem;
+}
+
+.app__icon {
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: .8rem;
+  flex-shrink: 0;
+}
+
+.app__header h3 {
+  margin: 0;
+  font-weight: 700;
+}
+
+.app__subtitle {
+  margin: .1rem 0 0;
+  font-size: .75rem;
+  color: var(--md-default-fg-color--light);
+}
+
+.app__body ul { margin-top: .6rem; }
+
+.app__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem .8rem;
+  margin-top: 1rem;
+  font-size: .75rem;
+}
+
+.app__links a { font-weight: 700; }
+
+/* Tighten the showcase on small screens */
+
+@media screen and (max-width: 44.9375em) {
+  .app { padding: 1rem; }
+  .app__media img { max-height: 15rem; }
+  .hero { gap: 1rem; }
+  .hero__logo { flex-basis: 100%; }
+}
